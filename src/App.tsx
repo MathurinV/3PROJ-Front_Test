@@ -7,6 +7,9 @@ import {getCurrentUser} from "./GraphQlQueries/getCurrentUser.ts";
 import {signOut} from "./GraphQlQueries/signOut.ts";
 import AmIConnectedButton from "./components/Buttons/AmIConnectedButton";
 import SignOutButton from "./components/Buttons/SignOutButton";
+import {register} from "./GraphQlQueries/register.ts";
+import DeleteSelfButton from "./components/Buttons/DeleteSelfButton";
+import {deleteSelf} from "./GraphQlQueries/deleteSelf.ts";
 
 const onSubmitLogin = (username: string, password: string) => {
     console.log(`Login=> Username: ${username}, Password: ${password}`);
@@ -38,6 +41,14 @@ const onGetCurrentUserPress = () => {
 
 const onSubmitRegister = (username: string, email: string, password: string) => {
     console.log(`Register=> Username: ${username}, Email: ${email}, Password: ${password}`);
+    register(email, password, username).then(data => {
+        console.log("data => ", data)
+        if (data?.data?.createUser) {
+            console.log("User is created, you are now logged in");
+        } else {
+            console.log("User is not created");
+        }
+    }).catch(error => console.error(error));
 }
 
 function onSignOutPress() {
@@ -47,6 +58,17 @@ function onSignOutPress() {
             console.log("User is signed out");
         } else {
             console.log("User is not signed out");
+        }
+    }).catch(error => console.error(error));
+}
+
+function onDeleteSelfPress() {
+    deleteSelf().then(data => {
+        console.log("data => ", data)
+        if (data?.data) {
+            console.log("User is deleted");
+        } else {
+            console.log("User is not deleted");
         }
     }).catch(error => console.error(error));
 }
@@ -72,6 +94,8 @@ function App() {
                                 <AmIConnectedButton onPress={onGetCurrentUserPress}/>
                                 <Box sx={{height: 50}}/>
                                 <SignOutButton onPress={onSignOutPress}/>
+                                <Box sx={{height: 50}}/>
+                                <DeleteSelfButton onPress={onDeleteSelfPress}/>
                             </Box>
                         </Box>
                     </>

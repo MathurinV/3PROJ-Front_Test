@@ -4,11 +4,16 @@ export const frontTheme = createTheme({
     // default colors
     palette: {
         primary: {
-            main: '#a0acc3',
-        },
-        secondary: {
-            main: '#dc004e',
-        },
+            main: '#142d54',
+        }, secondary: {
+            main: '#ffffff',
+        }, error: {
+            main: '#9d0101',
+        }, warning: {
+            main: '#f4ecaf',
+        }, background: {
+            paper: '#fdfcf5',
+        }
     },
     // default typography
     typography: {
