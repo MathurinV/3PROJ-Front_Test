@@ -42,9 +42,12 @@ function RegisterForm({onSubmit}: RegisterFormInput) {
 
     return (
         <Box component={Paper} elevation={3} sx={{padding: 2, display: 'flex', flexDirection: 'column', width: 'auto'}}>
-            <RequiredTextField fieldRef={usernameRef} textFieldLabel={"Username"} type={undefined} isEmptyField={isUsernameFieldEmptyOnSubmit}/>
-            <RequiredTextField fieldRef={emailRef} textFieldLabel={"Email"} type={undefined} isEmptyField={isEmailFieldEmptyOnSubmit}/>
-            <RequiredTextField fieldRef={passwordRef} textFieldLabel={"Password"} type={"password"} isEmptyField={isPasswordFieldEmptyOnSubmit}/>
+            <RequiredTextField fieldRef={usernameRef} textFieldLabel={"Username"} type={undefined}
+                               isEmptyField={isUsernameFieldEmptyOnSubmit}/>
+            <RequiredTextField fieldRef={emailRef} textFieldLabel={"Email"} type={undefined}
+                               isEmptyField={isEmailFieldEmptyOnSubmit}/>
+            <RequiredTextField fieldRef={passwordRef} textFieldLabel={"Password"} type={"password"}
+                               isEmptyField={isPasswordFieldEmptyOnSubmit}/>
             <TextField
                 type={"password"}
                 id="confirmPassword"
